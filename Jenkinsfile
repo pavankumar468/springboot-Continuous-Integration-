@@ -1,20 +1,22 @@
 pipeline {
-    agent any
+    agent any
 
-    stages {
+    stages {
 
-        stage('Build') {
-            steps {
-                echo 'Building Spring Boot app...'
-                sh './mvnw clean package'
-            }
-        }
+        stage('Build') {
+            steps {
+                echo 'Building Spring Boot app...'
+                sh 'chmod +x mvnw'
+                sh './mvnw clean package'
+            }
+        }
 
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-                sh './mvnw test'
-            }
-        }
-    }
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                sh './mvnw test'
+            }
+        }
+    }
 }
+
